@@ -4,14 +4,14 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const { graphqlHTTP } = require("express-graphql");
-
+require("dotenv").config();
 const graphqlSchema = require("./graphql/schema");
 const graphqlResolver = require("./graphql/resolvers");
 const auth = require("./middleware/is-auth");
 const { clearImage } = require("./util/file");
 
 const app = express();
-
+console.log(process.env.PORT);
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "images");
